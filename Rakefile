@@ -5,13 +5,15 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "redish"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Redis command-line shell}
+    gem.description = %Q{Redis command-line shell}
     gem.email = "filip@tepper.pl"
     gem.homepage = "http://github.com/filiptepper/redish"
     gem.authors = ["Filip Tepper"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency "redis", ">=0.1.2"
+    gem.executables = ["redish"]
+    gem.files = "{lib}/**/*"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+# encoding: utf-8
+
+require "rubygems"
+require "redis"
+require "pp"
+require "readline"
+
+require File.join(File.dirname(__FILE__), "..", "lib", "redish")
+
+require "optparse"
+
+options = {
+  :host => "127.0.0.1",
+  :port => 6379,
+  :db => 0
+}
+
+OptionParser.new do |opts|
+  opts.on("--host", "-h", "Host") { |option| options[:host] = option }
+  opts.on("--port", "-P", "Port") { |option| options[:port] = option.to_i }
+  opts.on("--database", "-db", "Database") { |option| options[:db] = option.to_i }
+  opts.on("--password", "-p", "Password") { |option| options[:password] = option }
+end.parse!
+
+redish = Redish::Application.new options
+redish.run
